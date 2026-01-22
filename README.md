@@ -167,7 +167,7 @@ Fallback garantido. Nenhuma quebra.
 
 ---
 
-## Observação final
+## Observação final 
 
 Essas customizações são ideais para:
 
@@ -188,7 +188,7 @@ services:
 
 -Depois do novosga ser instalado
 
-Execute :docker exec -it <nome_do_container> bin/console cache:clear
+Execute: docker exec -it <nome_do_container> bin/console cache:clear
 
 Execute: docker exec -it <nome_do_container> bin/console assets:install
 
