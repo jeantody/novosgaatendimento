@@ -183,8 +183,8 @@ services:
   novosga:
     image: novosga/novosga:2.2-standalone
     volumes:
-
-      - ./html/vendor/novosga:/var/www/html/vendor/novosga
+      - ./html/vendor/novosga/triage-bundle:/var/www/html/vendor/novosga/triage-bundle
+      - ./html/vendor/novosga/attendance-bundle:/var/www/html/vendor/novosga/attendance-bundle
 
 -Depois do novosga ser instalado
 
