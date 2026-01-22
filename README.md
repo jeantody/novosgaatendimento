@@ -186,9 +186,8 @@ services:
       - ./html/vendor/novosga/triage-bundle:/var/www/html/vendor/novosga/triage-bundle
       - ./html/vendor/novosga/attendance-bundle:/var/www/html/vendor/novosga/attendance-bundle
 
--Depois do novosga ser instalado
-
+Caso não suba as modificações:
+Depois do novosga ser instalado
 Execute: docker exec -it <nome_do_container> bin/console cache:clear
-
 Execute: docker exec -it <nome_do_container> bin/console assets:install
 
