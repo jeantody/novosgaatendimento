@@ -1,7 +1,3 @@
-Segue a **documentação final, organizada e pronta pra postar no GitHub**, juntando **as duas alterações** (modo totem + tooltip da fila). Direto, sem firula.
-
----
-
 # Customizações no NovoSGA
 
 Este repositório documenta ajustes realizados no **NovoSGA** com foco em **usabilidade** e **modo Totem (autoatendimento)**.
@@ -181,4 +177,18 @@ Essas customizações são ideais para:
 
 E não interferem no fluxo padrão administrativo do NovoSGA.
 
----
+No docker-compose.yml adicione o volume
+
+services:
+  novosga:
+    image: novosga/novosga:2.2-standalone
+    volumes:
+
+      - ./html/vendor/novosga:/var/www/html/vendor/novosga
+
+-Depois do novosga ser instalado
+
+Execute :docker exec -it <nome_do_container> bin/console cache:clear
+
+Execute: docker exec -it <nome_do_container> bin/console assets:install
+
