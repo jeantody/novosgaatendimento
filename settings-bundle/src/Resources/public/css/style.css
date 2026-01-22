@@ -1,0 +1,19 @@
+/**
+ * Novo SGA - Configuraçao unidade
+ * @author Rogerio Lino <rogeriolino@gmail.com>
+ */
+body>section {
+    padding: 20px 10px;
+}
+
+.tab-content {
+    padding: 20px 0;
+}
+
+table th.ativo {
+    width: 80px;
+}
+
+table th.sigla {
+    width: 150px;
+}

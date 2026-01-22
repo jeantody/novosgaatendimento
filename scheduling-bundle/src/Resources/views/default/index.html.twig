@@ -1,0 +1,82 @@
+{% extends "@NovosgaScheduling/base.html.twig" %}
+
+{% trans_default_domain 'NovosgaSchedulingBundle' %}
+
+{% block body %}
+    <div class="d-flex">
+        <div>
+            <h1>
+                <i class="fa fa-address-book" aria-hidden="true"></i> {{ 'title'|trans }}
+            </h1>
+            <p>{{ 'subtitle'|trans }}</p>
+        </div>
+        <form class="ms-auto me-3 mt-3">
+            <div class="input-group">
+                <select class="form-control" name="situacao">
+                    <option value="">{{ 'label.status'|trans }}</option>
+                    <option value="agendado" {% if app.request.get('situacao') == 'agendado' %}selected{% endif %}>{{ 'label.status_agendado'|trans }}</option>
+                    <option value="confirmado" {% if app.request.get('situacao') == 'confirmado' %}selected{% endif %}>{{ 'label.status_confirmado'|trans }}</option>
+                    <option value="nao_compareceu" {% if app.request.get('situacao') == 'nao_compareceu' %}selected{% endif %}>{{ 'label.status_nao_compareceu'|trans }}</option>
+                </select>
+                <input type="text" class="form-control" name="q" placeholder="{{ 'label.search'|trans }}" value="{{ app.request.get('q') }}">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <div class="mt-3">
+            <a href="{{ path('novosga_scheduling_new') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>
+                {{ 'button.new_scheduling'|trans }}
+            </a>
+            <a href="{{ path('novosga_scheduling_config_index') }}" class="btn btn-outline-secondary">
+                <i class="fa fa-cog"></i>&nbsp;
+                {% trans %}Configuração{% endtrans %}
+            </a>
+        </div>
+    </div>
+    
+    <table class="table table-hover border">
+        <thead>
+            <tr class="table-primary">
+                <th>#</th>
+                <th>{{ 'label.status'|trans }}</th>
+                <th>{{ 'label.date'|trans }} {{ 'label.time'|trans }}</th>
+                <th>{{ 'label.customer_id'|trans }}</th>
+                <th>{{ 'label.name'|trans }}</th>
+                <th>{{ 'label.service'|trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for agendamento in agendamentos %}
+                {% if agendamento.situacao == 'nao_compareceu' %}
+                    {% set bgclass = 'danger' %}
+                {% elseif agendamento.situacao == 'confirmado' %}
+                    {% set bgclass = 'success' %}
+                {% else %}
+                    {% set bgclass = 'secondary' %}
+                {% endif %}
+                <tr>
+                    <td>{{ agendamento.id }}</td>
+                    <td>
+                        <span class="badge text-bg-{{ bgclass }}">{{ agendamento.situacao }}</span>
+                    </td>
+                    <td>{{ agendamento.data|date('d/m/Y') }} {{ agendamento.hora|date('H:i') }}</td>
+                    <td>{{ agendamento.cliente.documento }}</td>
+                    <td>{{ agendamento.cliente.nome }}</td>
+                    <td>{{ agendamento.servico.nome }}</td>
+                    <td class="text-end">
+                        <a href="{{ path('novosga_scheduling_edit', { id: agendamento.id }) }}" class="btn btn-secondary">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+            
+    {{ paginacao|raw }}
+{% endblock %}

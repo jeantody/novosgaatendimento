@@ -1,0 +1,96 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="plaintext" original="messages.pt_BR.xlf" source-language="pt-BR" target-language="en-US">
+    <body>
+      <trans-unit id="0">
+        <source>module.name</source>
+        <target>Settings</target>
+        
+      </trans-unit>
+      <trans-unit id="1">
+        <source>title</source>
+        <target>Settings</target>
+        
+      </trans-unit>
+      <trans-unit id="2">
+        <source>subtitle</source>
+        <target>Unity settings</target>
+        
+      </trans-unit>
+      <trans-unit id="3">
+        <source>error.invalid_service</source>
+        <target>Invalid service</target>
+        
+      </trans-unit>
+      <trans-unit id="4">
+        <source>error.cannot_remove_disabled_service</source>
+        <target>You can't remove an active service</target>
+        
+      </trans-unit>
+      <trans-unit id="5">
+        <source>label.services</source>
+        <target>Services</target>
+        
+      </trans-unit>
+      <trans-unit id="6">
+        <source>label.search</source>
+        <target>Search</target>
+        
+      </trans-unit>
+      <trans-unit id="7">
+        <source>button.close</source>
+        <target>Close</target>
+        
+      </trans-unit>
+      <trans-unit id="8">
+        <source>button.add</source>
+        <target>Add</target>
+        
+      </trans-unit>
+      <trans-unit id="9">
+        <source>label.enabled</source>
+        <target>Enabled</target>
+        
+      </trans-unit>
+      <trans-unit id="10">
+        <source>label.attendance_type</source>
+        <target>Tipo de atendimento</target>
+        
+      </trans-unit>
+      <trans-unit id="10-1">
+        <source>label.attendance_type_all</source>
+        <target>Todos</target>
+
+      </trans-unit>
+      <trans-unit id="10-2">
+        <source>label.attendance_type_normal</source>
+        <target>Somente normal</target>
+
+      </trans-unit>
+      <trans-unit id="10-3">
+        <source>label.attendance_type_priority</source>
+        <target>Somente prioridad</target>
+        
+      </trans-unit>
+      <trans-unit id="11">
+        <source>label.all</source>
+        <target>All</target>
+        
+      </trans-unit>
+      <trans-unit id="12">
+        <source>label.normal</source>
+        <target>Normal</target>
+        
+      </trans-unit>
+      <trans-unit id="13">
+        <source>label.priority</source>
+        <target>Priority</target>
+        
+      </trans-unit>
+      <trans-unit id="14">
+        <source>label.schedule</source>
+        <target>Scheduling</target>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

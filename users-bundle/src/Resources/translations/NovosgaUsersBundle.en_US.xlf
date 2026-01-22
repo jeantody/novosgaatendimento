@@ -1,0 +1,226 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="plaintext" original="messages.pt_BR.xlf" source-language="pt-BR" target-language="en-US">
+    <body>
+      <trans-unit id="0">
+        <source>module.name</source>
+        <target>Users</target>
+        
+      </trans-unit>
+      <trans-unit id="1">
+        <source>title</source>
+        <target>Users</target>
+        
+      </trans-unit>
+      <trans-unit id="2">
+        <source>subtitle</source>
+        <target>Manage users of the current drive</target>
+        
+      </trans-unit>
+      <trans-unit id="3">
+        <source>form.lotacao.unidade</source>
+        <target>Section</target>
+        
+      </trans-unit>
+      <trans-unit id="4">
+        <source>form.lotacao.perfil</source>
+        <target>Profile</target>
+        
+      </trans-unit>
+      <trans-unit id="5">
+        <source>form.user.userIdentifier</source>
+        <target>User name</target>
+        
+      </trans-unit>
+      <trans-unit id="6">
+        <source>form.user.name</source>
+        <target>Name</target>
+        
+      </trans-unit>
+      <trans-unit id="7">
+        <source>form.user.lastname</source>
+        <target>Lastname</target>
+        
+      </trans-unit>
+      <trans-unit id="8">
+        <source>form.user.email</source>
+        <target>E-mail</target>
+        
+      </trans-unit>
+      <trans-unit id="9">
+        <source>form.user.active</source>
+        <target>Enabled</target>
+        
+      </trans-unit>
+      <trans-unit id="9-2">
+        <source>form.user.admin</source>
+        <target>Is administrator?</target>
+        
+      </trans-unit>
+      <trans-unit id="10">
+        <source>form.user.password</source>
+        <target>Ticket</target>
+        
+      </trans-unit>
+      <trans-unit id="11">
+        <source>form.user.password_confirm</source>
+        <target>Password confirmation</target>
+        
+      </trans-unit>
+      <trans-unit id="12">
+        <source>error.password_confirm</source>
+        <target>Password and password confirmation do not match.</target>
+        
+      </trans-unit>
+      <trans-unit id="13">
+        <source>section.general.title</source>
+        <target>General</target>
+        
+      </trans-unit>
+      <trans-unit id="14">
+        <source>section.general.subtitle</source>
+        <target>Basic user information</target>
+        
+      </trans-unit>
+      <trans-unit id="15">
+        <source>section.lotation.title</source>
+        <target>Loans</target>
+        
+      </trans-unit>
+      <trans-unit id="16">
+        <source>section.lotation.subtitle</source>
+        <target>Capacity is used to define the user access profile in the units.</target>
+        
+      </trans-unit>
+      <trans-unit id="17">
+        <source>label.unity</source>
+        <target>Section</target>
+        
+      </trans-unit>
+      <trans-unit id="18">
+        <source>label.role</source>
+        <target>Profile</target>
+        
+      </trans-unit>
+      <trans-unit id="19">
+        <source>button.add</source>
+        <target>Add</target>
+        
+      </trans-unit>
+      <trans-unit id="20">
+        <source>button.save</source>
+        <target>Save</target>
+        
+      </trans-unit>
+      <trans-unit id="21">
+        <source>button.back</source>
+        <target>Back</target>
+        
+      </trans-unit>
+      <trans-unit id="22">
+        <source>button.close</source>
+        <target>Close</target>
+        
+      </trans-unit>
+      <trans-unit id="23">
+        <source>button.change</source>
+        <target>Change</target>
+        
+      </trans-unit>
+      <trans-unit id="24">
+        <source>button.new_user</source>
+        <target>new user</target>
+        
+      </trans-unit>
+      <trans-unit id="25">
+        <source>button.change_password</source>
+        <target>Change password</target>
+        
+      </trans-unit>
+      <trans-unit id="26">
+        <source>button.view_permissions</source>
+        <target>View Permissions</target>
+        
+      </trans-unit>
+      <trans-unit id="27">
+        <source>button.remove</source>
+        <target>Remove</target>
+        
+      </trans-unit>
+      <trans-unit id="28">
+        <source>label.lotation</source>
+        <target>Stocking</target>
+        
+      </trans-unit>
+      <trans-unit id="29">
+        <source>label.name</source>
+        <target>Name</target>
+        
+      </trans-unit>
+      <trans-unit id="30">
+        <source>label.description</source>
+        <target>Description</target>
+        
+      </trans-unit>
+      <trans-unit id="31">
+        <source>label.permissions</source>
+        <target>Permission </target>
+        
+      </trans-unit>
+      <trans-unit id="32">
+        <source>label.status</source>
+        <target>Status</target>
+        
+      </trans-unit>
+      <trans-unit id="33">
+        <source>label.enabled</source>
+        <target>Enabled</target>
+        
+      </trans-unit>
+      <trans-unit id="34">
+        <source>label.disabled</source>
+        <target>Disabled </target>
+        
+      </trans-unit>
+      <trans-unit id="35">
+        <source>label.search</source>
+        <target>Search</target>
+        
+      </trans-unit>
+      <trans-unit id="36">
+        <source>label.username</source>
+        <target>User name</target>
+        
+      </trans-unit>
+      <trans-unit id="37">
+        <source>label.change_password</source>
+        <target>Change password</target>
+        
+      </trans-unit>
+      <trans-unit id="40">
+        <source>label.add_success</source>
+        
+      </trans-unit>
+      <trans-unit id="41">
+        <source>error.no_lotation</source>
+        
+      </trans-unit>
+      <trans-unit id="42">
+        <source>error.add_lotation_permission_denied</source>
+        
+      </trans-unit>
+      <trans-unit id="43">
+        <source>error.remove_lotation_permission_denied</source>
+        
+      </trans-unit>
+      <trans-unit id="44">
+        <source>error.permission_denied</source>
+        <target>Permission denied</target>
+        
+      </trans-unit>
+      <trans-unit id="45">
+        <source>error.more_than_one_lotation</source>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

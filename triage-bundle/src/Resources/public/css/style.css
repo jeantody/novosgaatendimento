@@ -1,0 +1,85 @@
+/**
+ * Novo SGA - Triagem
+ * @author Rogerio Lino <rogeriolino@gmail.com>
+ */
+body>section {
+    padding: 20px 10px;
+}
+ 
+#infobar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #F7F9FE;
+    background-position: 20px center;
+    background-repeat: no-repeat;
+    border: 1px solid #e1e1e8;
+    display: none; /* Oculta inserir informações de paciente */
+}
+
+.d-flex {
+    display: none; /* Oculta o titulo triagem */
+}
+
+header {
+  display: none; /* Oculta o header */
+}
+
+#infobar .ultima-senha {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#triagem-servicos {
+    margin-left: -5px !important;
+    margin-right: -5px !important;
+}
+
+#triagem-servicos .triagem-servico {
+    padding: 5px;
+}
+
+#triagem-servicos .triagem-servico a {
+    text-decoration: none;
+}
+
+#dialog-prioridade ul {
+    list-style: none;
+}
+
+#dialog-prioridade ul li {
+    padding: 5px 0;
+}
+
+#dialog-prioridade ul li input {
+    margin: 5px 10px 0 0;
+    float: left;
+}
+
+#dialog-servico div {
+    padding-bottom: 10px;
+}
+
+#dialog-servico div h3 {
+    padding: 10px 0 5px 5px;
+}
+
+#dialog-servico div .subservicos.empty {
+    color: #999;
+    font-style: italic;
+}
+
+#dialog-busca .modal-dialog {
+    max-width: 90%;
+}
+
+#dialog-busca .result {
+    overflow: auto;
+}
+

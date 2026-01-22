@@ -1,0 +1,31 @@
+/**
+ * Novo SGA - Monitor
+ * @author Rogerio Lino <rogeriolino@gmail.com>
+ */
+body>section {
+    padding: 20px 10px;
+}
+
+ 
+#monitor .search {
+    padding: 5px;
+}
+ 
+#monitor .card { margin-bottom: 10px }
+
+#monitor .servicos {
+    padding: 20px 0;
+}
+
+#monitor .servicos li.prioridade a {
+    font-weight: bold;
+}
+
+#dialog-transfere div #transfere_numero {
+    font-size: 22px;
+    display: block;
+}
+
+#dialog-busca .modal-dialog {
+    max-width: 90%;
+}

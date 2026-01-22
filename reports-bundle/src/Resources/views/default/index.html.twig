@@ -1,0 +1,86 @@
+{% extends "@NovosgaReports/base.html.twig" %}
+
+{% trans_default_domain 'NovosgaReportsBundle' %}
+
+{% block body %}
+    <div class="d-flex">
+        <div>
+            <h1>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i> {{ 'title'|trans }}
+            </h1>
+            <p>{{ 'subtitle'|trans }}</p>
+        </div>
+    </div>
+    
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="#tab-graficos" data-bs-toggle="tab" class="nav-link active">
+                {% trans %}Gráficos{% endtrans %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#tab-relatorios" data-bs-toggle="tab" class="nav-link">
+                {% trans %}Relatórios{% endtrans %}
+            </a>
+        </li>
+    </ul>
+    <div id="tabs" class="tab-content">
+        <div id="tab-graficos" class="tab-pane active">
+            {{ form_start(chartForm, { attr: { 'onsubmit': 'App.Estatisticas.Grafico.gerar(this); return false' } }) }}
+                <div class="row">
+                    <div class="col-lg-3 col-md-4">
+                        
+                        {{ form_row(chartForm.chart, { label: 'Gráfico' }) }}
+
+                        {{ form_row(chartForm.startDate, { label: 'Data inicial' }) }}
+
+                        {{ form_row(chartForm.endDate, { label: 'Data final' }) }}
+
+                        {{ form_row(chartForm.usuario, { label: 'Usuário' }) }}
+                        
+                        <button type="submit" class="btn btn-primary">
+                            {% trans %}Gerar gráfico{% endtrans %}
+                        </button>
+                    </div>
+                    <div class="col-lg-8 col-md-8 ml-auto">
+                        <div id="chart-result">
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(chartForm) }}
+        </div>
+        <div id="tab-relatorios" class="tab-pane">
+            {{ form_start(reportForm, { attr: { 'onsubmit': '' } }) }}
+            
+                {{ form_row(reportForm.report, { label: 'Relatório', attr: { 'onchange': 'App.Estatisticas.options(\'#tab-relatorios\')' } }) }}
+
+                <div class="option date date-range" style="display:none">
+                    {{ form_row(reportForm.startDate, { label: 'Data inicial' }) }}
+                </div>
+
+                <div class="option date date-range" style="display:none">
+                    {{ form_row(reportForm.endDate, { label: 'Data final' }) }}
+                </div>
+
+                <div class="option user" style="display:none">
+                    {{ form_row(reportForm.usuario, { label: 'Usuário' }) }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    {% trans %}Gerar relatório{% endtrans %}
+                </button>
+            {{ form_end(chartForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/novosgareports/css/style.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/novosgareports/js/Chart.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/novosgareports/js/script.js') }}"></script>
+{% endblock %}

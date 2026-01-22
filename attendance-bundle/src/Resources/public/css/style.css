@@ -1,0 +1,131 @@
+/**
+ * Novo SGA - Atendimento
+ * @author Rogerio Lino <rogeriolino@gmail.com>
+ */
+.attendance-panel {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.module-content .header {
+    margin-bottom: 0 !important;
+}
+
+#atendimento {
+    position: relative;
+}
+
+/* local */
+
+#atendimento #local {
+    color: #000;
+    min-width: 130px;
+    background-color: #F8CA00;
+    border-bottom: 3px solid #333;
+    display: block;
+}
+
+#atendimento #local .local {
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    display: block;
+    padding: .5rem 0;
+}
+
+#atendimento #local .numero {
+    font-size: 80px;
+    line-height: 80px;
+    padding: .8rem 0;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+#atendimento #local .tipo-atendimento {
+    font-size: 14px;
+    line-height: 14px;
+    padding: .4rem 0;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+}
+
+#atendimento #local .tipo-atendimento.tipo-normal { color: blue; }
+#atendimento #local .tipo-atendimento.tipo-prioridade { color: red; }
+#atendimento #local .tipo-atendimento.tipo-agendamento { color: darkorange; }
+
+#atendimento #local a {
+    color: #666;
+    bottom: 10px;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+}
+
+#atendimento #local a:hover { color: #000; }
+
+#atendimento .controls .btn .fa {
+    padding: 3pt 0;
+    font-size: 35pt;
+    display: block;
+}
+
+/* fila */
+
+#atendimento .fila {
+    clear: both;
+}
+
+#atendimento .fila .card-header {
+    font-size: 14px;
+}
+
+#atendimento .fila .card-body {
+    padding-top: 0 !important;
+}
+
+#atendimento .fila ul {
+    padding: 0;
+    margin: 0;
+}
+
+#atendimento .fila ul li {
+    list-style: none;
+    display: inline;
+    padding: 12px 6px 0 6px;
+    display: inline-block;
+}
+
+#atendimento .fila ul li .proximo {
+    font-size: 20px;
+}
+
+#atendimento .fila ul li .prioridade {
+    font-weight: bold;
+}
+
+#atendimento .fila ul li.empty {
+    color: #999;
+    font-style: italic;
+    padding-top: 15px;
+}
+
+p.links {
+    padding-top: 20px;
+    text-align: center;
+    clear: both;
+}
+
+p.links a {
+    margin: 0 5px;
+}
+
+#dialog-busca .modal-dialog {
+    max-width: 90%;
+}
+
+#dialog-busca .result {
+    overflow: auto;
+}

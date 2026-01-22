@@ -1,0 +1,400 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="plaintext" original="messages.pt_BR.xlf" source-language="pt-BR" target-language="es">
+    <body>
+      <trans-unit id="0">
+        <source>module.name</source>
+        <target>Atención</target>
+        
+      </trans-unit>
+      <trans-unit id="1">
+        <source>title</source>
+        <target>Tratamiento</target>
+        
+      </trans-unit>
+      <trans-unit id="2">
+        <source>label.attendance</source>
+        <target>Tratamiento</target>
+        
+      </trans-unit>
+      <trans-unit id="3">
+        <source>label.ticket</source>
+        <target>Billete</target>
+        
+      </trans-unit>
+      <trans-unit id="4">
+        <source>label.service</source>
+        <target>Servicio</target>
+        
+      </trans-unit>
+      <trans-unit id="5">
+        <source>label.priority</source>
+        <target>Prioridad</target>
+        
+      </trans-unit>
+      <trans-unit id="6">
+        <source>label.customer</source>
+        <target>Cliente</target>
+        
+      </trans-unit>
+      <trans-unit id="7">
+        <source>label.customer.name</source>
+        <target>Nombre</target>
+        
+      </trans-unit>
+      <trans-unit id="8">
+        <source>label.customer.id</source>
+        <target>Documento</target>
+        
+      </trans-unit>
+      <trans-unit id="9">
+        <source>label.services.available</source>
+        <target>Servicios disponibles</target>
+        
+      </trans-unit>
+      <trans-unit id="10">
+        <source>label.services.available.empty</source>
+        <target>Ningún servicio disponible</target>
+        
+      </trans-unit>
+      <trans-unit id="11">
+        <source>label.services.executed</source>
+        <target>Servicios realizados</target>
+        
+      </trans-unit>
+      <trans-unit id="12">
+        <source>label.services.executed.empty</source>
+        <target>Ningún servicio seleccionado</target>
+        
+      </trans-unit>
+      <trans-unit id="13">
+        <source>label.remove</source>
+        <target>Suprimir</target>
+        
+      </trans-unit>
+      <trans-unit id="button.call">
+        <source>button.call</source>
+        <target>Llamar</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>button.call_next</source>
+        <target>Llamar al siguiente</target>
+        
+      </trans-unit>
+      <trans-unit id="15">
+        <source>button.call_again</source>
+        <target>Llamar nuevamente</target>
+        
+      </trans-unit>
+      <trans-unit id="16">
+        <source>button.start</source>
+        <target>Iniciar atención</target>
+        
+      </trans-unit>
+      <trans-unit id="17">
+        <source>button.not_show</source>
+        <target>No se presentó</target>
+        
+      </trans-unit>
+      <trans-unit id="18">
+        <source>button.finish</source>
+        <target>Cerrar atención</target>
+        
+      </trans-unit>
+      <trans-unit id="19">
+        <source>button.error</source>
+        <target>Error de selección</target>
+        
+      </trans-unit>
+      <trans-unit id="20">
+        <source>button.redirect</source>
+        <target>Terminar y redirigir el servicio</target>
+        
+      </trans-unit>
+      <trans-unit id="20-1">
+        <source>button.back</source>
+        <target>Volver</target>
+        
+      </trans-unit>
+      <trans-unit id="21">
+        <source>label.my_queue</source>
+        <target>Mi fila</target>
+        
+      </trans-unit>
+      <trans-unit id="22">
+        <source>label.my_queue.empty</source>
+        <target>Fila vacía</target>
+        
+      </trans-unit>
+      <trans-unit id="23">
+        <source>button.find_ticket</source>
+        <target>Consultar número</target>
+        
+      </trans-unit>
+      <trans-unit id="24">
+        <source>button.enable_notification</source>
+        <target>Habilitar notificación</target>
+        
+      </trans-unit>
+      <trans-unit id="25">
+        <source>modal.place</source>
+        <target>Puesto</target>
+        
+      </trans-unit>
+      <trans-unit id="26">
+        <source>button.add</source>
+        <target>Agregar</target>
+        
+      </trans-unit>
+      <trans-unit id="27">
+        <source>button.change</source>
+        <target>Modificar</target>
+        
+      </trans-unit>
+      <trans-unit id="28-2">
+        <source>label.place</source>
+        <target>Local</target>
+        
+      </trans-unit>
+      <trans-unit id="28">
+        <source>label.place.number</source>
+        <target>Número</target>
+        
+      </trans-unit>
+      <trans-unit id="29">
+        <source>button.save</source>
+        <target>Guardar</target>
+        
+      </trans-unit>
+      <trans-unit id="30">
+        <source>modal.redirect</source>
+        <target>Redireccionar</target>
+        
+      </trans-unit>
+      <trans-unit id="31">
+        <source>label.redirect.new_service</source>
+        <target>Nuevo Servicio</target>
+        
+      </trans-unit>
+      <trans-unit id="32">
+        <source>modal.redirect.button.redirect</source>
+        <target>Redireccionar</target>
+        
+      </trans-unit>
+      <trans-unit id="33">
+        <source>modal.redirect.button.finish</source>
+        <target>Terminar y redireccionar</target>
+        
+      </trans-unit>
+      <trans-unit id="34">
+        <source>modal.error.text</source>
+        <target>Por favor,  seleccione primero los servicios realizados</target>
+        
+      </trans-unit>
+      <trans-unit id="35">
+        <source>modal.search</source>
+        <target>Busca</target>
+        
+      </trans-unit>
+      <trans-unit id="36">
+        <source>modal.search.placeholder</source>
+        <target>Contraseña completa, sigla o número</target>
+        
+      </trans-unit>
+      <trans-unit id="37">
+        <source>label.ticket.number</source>
+        <target>Número</target>
+        
+      </trans-unit>
+      <trans-unit id="38">
+        <source>label.ticket.arrival_date</source>
+        <target>Date de llegada</target>
+        
+      </trans-unit>
+      <trans-unit id="39">
+        <source>label.ticket.start_date</source>
+        <target>Data de inicio</target>
+        
+      </trans-unit>
+      <trans-unit id="40">
+        <source>label.ticket.end_date</source>
+        <target>Data de finalización</target>
+        
+      </trans-unit>
+      <trans-unit id="41">
+        <source>label.triage</source>
+        <target>Selección</target>
+        
+      </trans-unit>
+      <trans-unit id="42">
+        <source>label.ticket.user</source>
+        <target>Operador</target>
+        
+      </trans-unit>
+      <trans-unit id="43">
+        <source>label.status</source>
+        <target>Situación</target>
+        
+      </trans-unit>
+      <trans-unit id="44">
+        <source>MM/DD/YYYY HH:mm:ss</source>
+        <target>DD/MM/YYYY HH:mm:ss</target>
+        
+      </trans-unit>
+      <trans-unit id="45">
+        <source>label.ticket.wait_time</source>
+        <target>Tiempo de espera</target>
+        
+      </trans-unit>
+      <trans-unit id="46">
+        <source>alert.ticket_error.text</source>
+        <target>Realmente desea marcar como error de selección?</target>
+        
+      </trans-unit>
+      <trans-unit id="47">
+        <source>label.attendance.type</source>
+        <target>Tipo de Atención</target>
+        
+      </trans-unit>
+      <trans-unit id="48">
+        <source>label.choose</source>
+        <target>Seleccione</target>
+        
+      </trans-unit>
+      <trans-unit id="49">
+        <source>modal.search.button.submit</source>
+        <target>Consultar</target>
+        
+      </trans-unit>
+      <trans-unit id="50">
+        <source>label.all</source>
+        <target>Todos</target>
+        
+      </trans-unit>
+      <trans-unit id="51">
+        <source>label.no_priority</source>
+        <target>Convencional</target>
+        
+      </trans-unit>
+      <trans-unit id="52">
+        <source>label.priority</source>
+        <target>Prioridad</target>
+        
+      </trans-unit>
+      <trans-unit id="53">
+        <source>error.queue.empty</source>
+        <target>Fila vacía</target>
+        
+      </trans-unit>
+      <trans-unit id="54">
+        <source>error.attendance.in_process</source>
+        <target>Ya existe una atención en proceso</target>
+        
+      </trans-unit>
+      <trans-unit id="55">
+        <source>error.attendance.no_service</source>
+        <target>Ningún servicio seleccionado</target>
+        
+      </trans-unit>
+      <trans-unit id="56">
+        <source>error.attendance.not_in_process</source>
+        <target>Ninguna atención en desarrollo</target>
+        
+      </trans-unit>
+      <trans-unit id="57">
+        <source>error.attendance.redirect</source>
+        <target>Error al redireccionar el servicio %atendimento% para el servicio %servico%</target>
+        
+      </trans-unit>
+      <trans-unit id="58">
+        <source>error.attendance.change_status</source>
+        <target>Error al cambiar el estado del servicio %atendimento% para cerrarlo</target>
+        
+      </trans-unit>
+      <trans-unit id="59">
+        <source>error.attendance.invalid</source>
+        <target>Atención inválida</target>
+        
+      </trans-unit>
+      <trans-unit id="60">
+        <source>error.unknown</source>
+        <target>Error desconocido</target>
+        
+      </trans-unit>
+      <trans-unit id="61">
+        <source>error.attendance.empty</source>
+        <target>Ninguna atención disponible</target>
+        
+      </trans-unit>
+      <trans-unit id="62">
+        <source>server.datetime</source>
+        <target>Fecha y hora en el servidor</target>
+        
+      </trans-unit>
+      <trans-unit id="63">
+        <source>label.schedule</source>
+        <target>Programación</target>
+        
+      </trans-unit>
+      <trans-unit id="64">
+        <source>label.notes</source>
+        
+      </trans-unit>
+      <trans-unit id="64-1">
+        <source>label.resolution</source>
+        
+      </trans-unit>
+      <trans-unit id="64-2">
+        <source>label.resolution_solved</source>
+        
+      </trans-unit>
+      <trans-unit id="64-3">
+        <source>label.resolution_pending</source>
+        
+      </trans-unit>
+      <trans-unit id="65">
+        <source>label.redirect.new_user</source>
+        
+      </trans-unit>
+      <trans-unit id="66">
+        <source>error.place_number</source>
+        
+      </trans-unit>
+      <trans-unit id="67">
+        <source>error.queue_type</source>
+        
+      </trans-unit>
+      <trans-unit id="68">
+        <source>modal.error</source>
+        <target>Error</target>
+        
+      </trans-unit>
+      <trans-unit id="69">
+        <source>label.yes</source>
+        <target>Si</target>
+        
+      </trans-unit>
+      <trans-unit id="70">
+        <source>label.no</source>
+        <target>No</target>
+        
+      </trans-unit>
+      <trans-unit id="71">
+        <source>alert.title</source>
+        <target>Atención</target>
+        
+      </trans-unit>
+      <trans-unit id="72">
+        <source>alert.finish.text</source>
+        
+      </trans-unit>
+      <trans-unit id="73">
+        <source>alert.no_show.text</source>
+        
+      </trans-unit>
+      <trans-unit id="modal.customer">
+        <source>modal.customer</source>
+        <target>Editar cliente</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

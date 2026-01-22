@@ -1,0 +1,367 @@
+{% extends "@NovosgaMonitor/base.html.twig" %}
+
+{% trans_default_domain 'NovosgaMonitorBundle' %}
+
+{% block body %}
+    <div id="monitor">
+        <div class="d-flex">
+            <div>
+                <h1>
+                    <i class="fa fa-desktop" aria-hidden="true"></i> {{ 'title'|trans }}
+                </h1>
+                <p>{{ 'subtitle'|trans }}</p>
+            </div>
+            <form class="ms-auto" role="search"  v-on:submit.prevent="consulta">
+                <div class="input-group">
+                    <input type="text" class="form-search form-control" placeholder="{{ 'placeholder.search'|trans }}" v-model="search">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary" title="{{ 'button.find'|trans }}">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="servicos row" v-cloak>
+            <div class="col-md-12" v-if="servicos.length===0">
+                <div class="jumbotron text-center">
+                    <h1><i class="fa fa-smile-o"></i></h1>
+                    <p>Ninguém aguardando atendimento no momento</p>
+                </div>
+            </div>
+            <div v-bind:class="{'col-md-6': item.servicoUnidade, 'col-md-12': !item.servicoUnidade}" v-for="item in servicos">
+                <div v-bind:class="{'card': true, 'border-dark': !item.servicoUnidade}">
+                    <div class="card-header">
+                        <span v-if="item.servicoUnidade">
+                            {% verbatim %}
+                                {{ item.servicoUnidade.sigla }} - {{ item.servicoUnidade.servico.nome }}
+                            {% endverbatim %}
+                        </span>
+                        <b v-if="!item.servicoUnidade">
+                            Todos serviços
+                        </b>
+                        <div class="pull-right">
+                            <span class="badge text-bg-primary">
+                                {{ 'label.no_priority'|trans }}
+                                {% verbatim %}
+                                    {{ totalPorSituacao(item.fila, false) }}
+                                {% endverbatim %}
+                            </span>
+                            <span class="badge text-bg-danger">
+                                {{ 'label.priority'|trans }}
+                                {% verbatim %}
+                                    {{ totalPorSituacao(item.fila, true) }}
+                                {% endverbatim %}
+                            </span>
+                            <span class="badge text-bg-secondary">
+                                {{ 'label.total'|trans }}
+                                {% verbatim %}
+                                    {{ item.fila.length }}
+                                {% endverbatim %}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="fila list-inline">
+                            <li
+                                v-for="atendimento in item.fila"
+                                v-bind:class="{prioridade: atendimento.prioridade.peso > 0 }"
+                                class="list-inline-item">
+                                <a 
+                                    href="#"
+                                    v-on:click="view(atendimento)"
+                                    v-bind:style="getItemFilaStyle(atendimento)"
+                                    v-bind:title="atendimento.prioridade.nome + ' (' + atendimento.tempoEspera + ')'">
+                                    {% verbatim %}
+                                        {{atendimento.senha.format}}
+                                    {% endverbatim %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {# dialog busca #}
+        <div ref="buscaModal" id="dialog-busca" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'modal.search'|trans }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row" role="form" v-on:submit.prevent="consultar">
+                            <div class="col-3">
+                                <div class="input-group">
+                                    <input type="text" maxlength="10" class="form-search form-control" placeholder="{{ 'modal.search.placeholder'|trans }}" v-model="search">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary" title="{{ 'modal.search.button.submit'|trans }}">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <div class="result">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="table-primary">
+                                        <th>{{ 'label.ticket.number'|trans }}</th>
+                                        <th>{{ 'label.service'|trans }}</th>
+                                        <th>{{ 'label.ticket.arrival_date'|trans }}</th>
+                                        <th>{{ 'label.ticket.start_date'|trans }}</th>
+                                        <th>{{ 'label.ticket.end_date'|trans }}</th>
+                                        <th>{{ 'label.triage'|trans }}</th>
+                                        <th>{{ 'label.ticket.user'|trans }}</th>
+                                        <th>{{ 'label.status'|trans }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% verbatim %}
+                                        <tr v-for="atendimento in searchResult" v-bind:class="{danger: (atendimento.status === 'nao_compareceu' || atendimento.status === 'cancelada')}">
+                                            <td>
+                                                <a href="#" v-on:click.prevent="view(atendimento)">
+                                                    {{atendimento.senha.format}}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                {{atendimento.servico.nome}}
+                                            </td>
+                                            <td>
+                                                <span v-if="atendimento.dataChegada">
+                                                    {{moment(atendimento.dataChegada, 'YYYY-MM-DD HH:mm:ss').format(dateTimeFormat)}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span v-if="atendimento.dataInicio">
+                                                    {{moment(atendimento.dataInicio, 'YYYY-MM-DD HH:mm:ss').format(dateTimeFormat)}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span v-if="atendimento.dataFim">
+                                                    {{moment(atendimento.dataFim, 'YYYY-MM-DD HH:mm:ss').format(dateTimeFormat)}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                {{atendimento.triagem?.login}}
+                                            </td>
+                                            <td>
+                                                {{atendimento.usuario?.login}}
+                                            </td>
+                                            <td>
+                                                {{atendimento.status}}
+                                            </td>
+                                        </tr>
+                                    {% endverbatim %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# dialog view #}
+        <div ref="viewModal" id="dialog-view" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'modal.attendance'|trans }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" v-if="atendimento">
+                        <input type="hidden" v-bind:valuee="atendimento.id" />
+                        <fieldset>
+                            <legend>{{ 'modal.attendance.ticket'|trans }}</legend>
+                            <table class="table border">
+                                <tr>
+                                    <th>
+                                        {{ 'label.ticket.number'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.senha.format}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ 'label.priority'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.prioridade.nome}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ 'label.service'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.servico.nome}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ 'label.ticket.arrival_date'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{moment(atendimento.dataChegada, 'YYYY-MM-DD HH:mm:ss').format(dateTimeFormat)}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ 'label.ticket.wait_time'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.tempoEspera}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ 'label.ticket.start_date'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.dataInicio}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ 'label.ticket.end_date'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.dataFim}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ 'label.status'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.status}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                                
+                                
+                        <fieldset>
+                            <legend>{{ 'label.customer'|trans }}</legend>
+                            <table class="table border">
+                                <tr>
+                                    <th>
+                                        {{ 'label.customer.name'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.cliente?.nome}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ 'label.customer.id'|trans }}
+                                    </th>
+                                    <td>
+                                        {% verbatim %}
+                                            {{atendimento.cliente?.documento}}
+                                        {% endverbatim %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer" v-if="atendimento">
+                        <button type="button" class="btn btn-primary" v-on:click="reativar(atendimento)" v-if="atendimento.status === 'cancelada' || atendimento.status === 'nao_compareceu'">
+                            {{ 'modal.attendance.button.reactivate'|trans }}
+                        </button>
+
+                        <button type="button" class="btn btn-secondary" v-on:click="transfere(atendimento)" v-if="atendimento.status === 'emitida'">
+                            {{ 'modal.attendance.button.transfer'|trans }}
+                        </button>
+
+                        <button type="button" class="btn btn-danger" v-on:click="cancelar(atendimento)" v-if="atendimento.status === 'emitida'">
+                            {{ 'modal.attendance.button.cancel'|trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# transfere #}
+        <div ref="transfereModal" id="dialog-transfere" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                {{ form_start(transferirForm, { attr: { 'v-on:submit.prevent': 'transferir(atendimento, novoServico, novaPrioridade)' } }) }}
+                    <div class="modal-content" v-if="atendimento">
+                        <div class="modal-header">
+                            <h5 class="modal-title">
+                                {{ 'modal.transfer'|trans }}
+                                <span class="badge">
+                                    {% verbatim %}
+                                        {{atendimento.senha.format}}
+                                    {% endverbatim %}
+                                </span>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            
+                            {{ form_row(transferirForm.servico, { attr: { 'v-model': 'novoServico' } }) }}
+                            
+                            {{ form_row(transferirForm.prioridade, { attr: { 'v-model': 'novaPrioridade' } }) }}
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">
+                                {{ 'modal.transfer.button'|trans }}
+                            </button>
+                        </div>
+                    </div>
+                {{ form_end(transferirForm) }}
+            </div>
+        </div>
+    </div>
+    <div id="novosga-clock" title="{{ 'server.datetime'|trans }}" class="clock"></div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link type="text/css" rel="stylesheet" href="{{ asset('bundles/novosgamonitor/css/style.css') }}">
+{% endblock %}    
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        const ids = [{% for su in servicos %}{{su.servico.id}},{% endfor %}];
+        const usuario = {{ usuario|json_encode()|raw }};
+        const unidade = {{ unidade|json_encode()|raw }};
+        const labelSim = "{{ 'label.yes'|trans }}";
+        const labelNao = "{{ 'label.no'|trans }}";
+        const alertTitle = "{{ 'alert.title'|trans }}";
+        const alertCancelar = "{{ 'alert.cancel.text'|trans }}";
+        const alertReativar = "{{ 'alert.reactivate.text'|trans }}";
+        const alertTransferir = "{{ 'alert.transfer.text'|trans }}";
+        const dateTimeFormat = "{{ 'MM/DD/YYYY HH:mm:ss'|trans }}";
+        
+        App.Clock.init("novosga-clock", {{ milis }});
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/novosgamonitor/js/sweetalert.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/novosgamonitor/js/script.js') }}"></script>
+{% endblock %}
