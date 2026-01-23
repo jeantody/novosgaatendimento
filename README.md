@@ -16,8 +16,6 @@ Este repositório documenta ajustes realizados no **NovoSGA** com foco em **usab
 
 ---
 
-### Arquivo alterado
-
 Template de triagem:
 
 ```twig
@@ -88,6 +86,9 @@ Essas customizações são ideais para:
   
 E não interferem no fluxo padrão administrativo do NovoSGA.
 
+
+-Para ultilizar
+Crie uma pasta /novosga dentro de /html/vendor, copie os arquivos desse diretorio
 No docker-compose.yml adicione o volume
 
 services:
@@ -99,6 +100,7 @@ services:
 
 Caso não suba as modificações:
 Depois do novosga ser instalado
+
 Execute: docker exec -it <nome_do_container> bin/console cache:clear
 Execute: docker exec -it <nome_do_container> bin/console assets:install
 
