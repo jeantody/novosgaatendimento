@@ -4,19 +4,7 @@ Este repositório documenta ajustes realizados no **NovoSGA** com foco em **usab
 
 ---
 
-## 1. Modo Totem na Triagem (ocultação de elementos)
-
-### Módulo
-
-* **Triage (Triagem)**
-
-### Contexto
-
-Para uso em **totem de autoatendimento**, alguns elementos da interface padrão não são necessários e atrapalham a experiência do usuário final.
-
-### Objetivo
-
-Ocultar elementos administrativos e de navegação, deixando apenas a seleção de serviços visível.
+## 1. Ocultar elementos administrativos e de navegação, deixando apenas a seleção de serviços visível.
 
 ---
 
@@ -70,86 +58,10 @@ Adicionar o CSS **logo após** o início do `{% block body %}`:
 
 Interface limpa, ideal para **autoatendimento em totem**, exibindo apenas os serviços disponíveis ao público.
 
----
 
-## 2. Tooltip com nome do paciente na fila de atendimento
+## 2. Exibir **o nome do paciente no tooltip**, quando disponível, mantendo compatibilidade com o comportamento atual.
 
-### Módulo
 
-* **Attendance (Fila de Atendimento)**
-
-### Contexto
-
-Nas filas (ex.: **Todos serviços**, **Serviço teste**), era exibido apenas:
-
-* A senha (ex.: `A006`)
-* Tooltip com:
-
-  ```
-  Serviço (Tempo de Espera)
-  ```
-
-### Objetivo
-
-Exibir **o nome do paciente no tooltip**, quando disponível, mantendo compatibilidade com o comportamento atual.
-
----
-
-### Arquivo alterado
-
-```
-vendor/novosga/attendance-bundle/
-└── src/Resources/views/default/index.html.twig
-```
-
----
-
-### Alteração realizada
-
-#### Antes
-
-```twig
-v-bind:title="atendimento.servico.nome + ' (' + atendimento.tempoEspera + ')'"
-```
-
-#### Depois
-
-```twig
-v-bind:title="(atendimento.cliente ? atendimento.cliente.nome + ' - ' : '') 
-              + atendimento.servico.nome + ' (' + atendimento.tempoEspera + ')'"
-```
-
----
-
-### Lógica aplicada
-
-* Se existir paciente:
-
-  ```
-  Nome do Paciente - Serviço (Tempo de Espera)
-  ```
-* Se não existir:
-
-  ```
-  Serviço (Tempo de Espera)
-  ```
-
-Fallback garantido. Nenhuma quebra.
-
----
-
-### Origem dos dados
-
-* `atendimento.cliente.nome` já é enviado via AJAX
-* Confirmado em:
-
-  ```
-  src/Entity/AbstractAtendimento.php
-  ```
-
-  (`cliente` incluído no `jsonSerialize()`)
-
----
 
 ### Impacto
 
@@ -173,8 +85,7 @@ Essas customizações são ideais para:
 
 * Ambientes de alto fluxo
 * Totens de autoatendimento
-* Clínicas, laboratórios e unidades com triagem pública
-
+  
 E não interferem no fluxo padrão administrativo do NovoSGA.
 
 No docker-compose.yml adicione o volume
