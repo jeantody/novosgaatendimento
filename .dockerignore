@@ -1,0 +1,10 @@
+.git
+README.md
+docker-compose.yml
+core
+customers-bundle
+monitor-bundle
+reports-bundle
+scheduling-bundle
+settings-bundle
+users-bundle
